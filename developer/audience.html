@@ -1,0 +1,21 @@
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <script type="text/javascript" src="fowllow.js"></script>
+    <script>
+      function url_callback(url) {
+        if (url != window.location) {
+          window.location = url;
+        }
+      }
+      function try_to_refresh() {
+        get_url('voidmain', 'test_meeting', url_callback);
+      }
+
+      setInterval(try_to_refresh, 500);
+    </script>
+  </head>
+  <body>
+    Sample Speaker
+  </body>
+</html>

@@ -25,8 +25,7 @@ function report() {
 }
 
 function put_url(name, topic, url) {
-    http.open('PUT', fowllow_endpoint + name + "/" + topic + "?url=" + url, false);
-    // http.send('url=' + url);
+    http.open('POST', fowllow_endpoint + name + "/" + topic + "?url=" + url, true);
     http.send();
 }
 
@@ -56,23 +55,26 @@ function poll() {
     setInterval(try_to_refresh, 500);
 }
 
+function getCookie(c_name)
+{
+    var i,x,y,ARRcookies=document.cookie.split(";");
+    for (i=0;i<ARRcookies.length;i++) {
+        x=ARRcookies[i].substr(0,ARRcookies[i].indexOf("="));
+        y=ARRcookies[i].substr(ARRcookies[i].indexOf("=")+1);
+        x=x.replace(/^\s+|\s+$/g,"");
+        if (x==c_name) {
+            return unescape(y);
+        }
+    }
+}
+
 var role;
 
 // Debug routings
-var isSafari = Object.prototype.toString.call(window.HTMLElement).indexOf('Constructor') > 0;
+var role = getCookie('slidown_role');
 
-if (isSafari) {
-    role = "Guide"
+if (role == 'Guide') {
     report();
 } else {
-    role = "Follower"
     poll();
 }
-// switch (get_meta("role")) {
-// 	case "guide":
-// 		report(); //Not sure if window location is available now
-// 		break;
-// 	case "follower":
-// 		poll();
-// 		break;
-// }

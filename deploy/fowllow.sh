@@ -5,7 +5,7 @@ SCRIPT_NAME=fowllow
 # 缺省设置供测试使用
 
 THIN_CONFIG=/home/fowllow/fowllow.yml
-FOWLLOW_CONFIG=/home/fowllow/fowllow/src/backend/config.ru
+FOWLLOW_CONFIG=/home/fowllow/fowllow/backend/config.ru
 NOHUP=/usr/bin/nohup
 
 [ -x "$THIN" ] || exit 0

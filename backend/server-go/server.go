@@ -6,35 +6,28 @@ import (
 	"net/http"
 )
 
-func getParams(r *http.Request) (string, string) {
+func getParams(r *http.Request) (string, string, string) {
 
 	params := r.URL.Query()
 	user := params.Get(":user")
 	topic := params.Get(":topic")
-	return user, topic
-}
-
-func genKey(user string, topic string) (key string) {
 	key := user + "@" + topic
-	return key
+	return user, topic, key
 }
 
 func getSlide(w http.ResponseWriter, r *http.Request) {
-	user, topic := getParams(r)
-	key := genKey(user, topic)
+	user, topic, key := getParams(r)
 	fmt.Fprintf(w, "you are get user %s topic %s key %s", user, topic, key)
 }
 
 func postSlide(w http.ResponseWriter, r *http.Request) {
-	user, topic := getParams(r)
-	key := genKey(user, topic)
-	fmt.Fprintf(w, "you are get user %s topic %s", user, topic)
+	user, topic, key := getParams(r)
+	fmt.Fprintf(w, "you are get user %s topic %s key %s", user, topic, key)
 }
 
 func putSlide(w http.ResponseWriter, r *http.Request) {
-	user, topic := getParams(r)
-	key := genKey(user, topic)
-	fmt.Fprintf(w, "you are get user %s topic %s", user, topic)
+	user, topic, key := getParams(r)
+	fmt.Fprintf(w, "you are get user %s topic %s key %s", user, topic, key)
 }
 
 func main() {

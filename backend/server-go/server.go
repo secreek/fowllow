@@ -39,9 +39,8 @@ func getParams(r *http.Request) (string, string, string, string) {
 }
 
 func getSlide(w http.ResponseWriter, r *http.Request) {
-
-	showHTTPHeader(w, r)
 	w.Header().Set("Access-Control-Allow-Origin", "*")
+	showHTTPHeader(w, r)
 	user, topic, key, uri := getParams(r)
 	url := UrlMap[key]
 	fmt.Fprintf(w, "you are get user %s topic %s key %s uri %s,url %s", user, topic, key, uri, url)
@@ -49,8 +48,8 @@ func getSlide(w http.ResponseWriter, r *http.Request) {
 }
 
 func postSlide(w http.ResponseWriter, r *http.Request) {
-	showHTTPHeader(w, r)
 	w.Header().Set("Access-Control-Allow-Origin", "*")
+	showHTTPHeader(w, r)
 	user, topic, key, uri := getParams(r)
 	url := uri
 	UrlMap[key] = url

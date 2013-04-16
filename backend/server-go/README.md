@@ -1,5 +1,5 @@
-== Build & Run==
+## Build & Run
 
-''''shell
+````shell
 	go build server.go
 	./server

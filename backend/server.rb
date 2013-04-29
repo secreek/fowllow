@@ -20,7 +20,7 @@ get '/:user/:topic' do
   response.headers['Access-Control-Allow-Origin'] = '*'
   key = gen_key(params)
   url = current_url_map[key]
-  url ||= "Not Found" # FIXME
+  url ||= "0" # FIXME
 end
 
 # FIXME
